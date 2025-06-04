@@ -1,0 +1,30 @@
+<div class="row p-4">
+    <div class="col-3">
+        @if (isVisible == true) {
+        <div class="bg-success p-3">
+            Div 1
+        </div>
+        }
+    </div>
+    <div class="col-3">
+        @if(isChecked==true){
+        <div class="bg-primary p-3">
+            Checked
+        </div>
+        }
+        @else {
+        <div class="bg-danger p-3">
+            Unchecked
+        </div>
+        }
+    </div>
+</div>
+<div class="row p-4">
+    <div class="col-3">
+        <button class="btn btn-danger mx-3" (click)="hideShow(false)">Hide</button>
+        <button class="btn btn-success" (click)="hideShow(true)">Show</button>
+    </div>
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="isChecked">
+    </div>
+</div>

@@ -7,10 +7,11 @@ import { NgIfComponent } from "./components/ng-if/ng-if.component";
 import { NgForComponent } from "./components/ng-for/ng-for.component";
 import { NgClassComponent } from "./components/ng-class/ng-class.component";
 import { NgStyleComponent } from "./components/ng-style/ng-style.component";
+import { ControlStmtComponent } from './components/control-stmt/control-stmt.component';
 
 @Component({
   selector: 'app-root',
-  imports: [NgStyleComponent],
+  imports: [ControlStmtComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

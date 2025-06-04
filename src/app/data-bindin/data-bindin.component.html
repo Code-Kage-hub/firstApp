@@ -1,0 +1,27 @@
+<div class="one way binding">
+    <p>data-bindin works!</p>
+
+    <h3>This is interpolations : {{firstName}}</h3>
+
+    <h3>This is property binding</h3>
+    <input type="text" [value]="firstName">
+
+    <h3>This is event binding</h3>
+    <button (click)="btnClickedMsg()">click me 😿</button>
+</div>
+
+<div class="two-way-binding">
+   <input type="text" [(ngModel)]="firstName"> 
+   <br>
+
+   <div>
+        <select  [(ngModel)]="selectedCountry">
+            <option value="London">London</option>
+            <option value="America">America</option>
+            <option value="Russia">Russia</option>
+            <option value="Australia">Australia</option>
+            <option value="Japan">Japan</option>
+        </select>
+        -{{selectedCountry}}
+   </div>
+</div>

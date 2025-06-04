@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { UserComponent } from "./user/user.component";
-import { AdminComponent } from "./admin/admin.component";
-import { DataBindinComponent } from "./data-bindin/data-bindin.component";
-import { NgIfComponent } from "./ng-if/ng-if.component";
-import { NgForComponent } from "./ng-for/ng-for.component";
+import { UserComponent } from "./components/user/user.component";
+import { AdminComponent } from "./components/admin/admin.component";
+import { DataBindinComponent } from "./components/data-bindin/data-bindin.component";
+import { NgIfComponent } from "./components/ng-if/ng-if.component";
+import { NgForComponent } from "./components/ng-for/ng-for.component";
+import { NgClassComponent } from "./components/ng-class/ng-class.component";
+import { NgStyleComponent } from "./components/ng-style/ng-style.component";
 
 @Component({
   selector: 'app-root',
-  imports: [NgForComponent],
+  imports: [NgStyleComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

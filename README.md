@@ -115,4 +115,16 @@ You can create dynamic elements in Angular by:
 </div>
 ```
 
+**Key Differences Between Structural and Control Flow Directives**
+
+| Feature              | `*ngIf`, `*ngFor` (Structural Directives) | `@if`, `@for` (Control Flow Directives) |
+| -------------------- | ----------------------------------------- | --------------------------------------- |
+| Introduced In        | Angular before v17                        | Angular v17 and above                   |
+| Syntax               | Uses `*directive`                         | Uses `@directive { }`                   |
+| Readability          | Less readable for nested logic            | Cleaner and easier to read              |
+| Uses `ng-template`   | Yes, implicitly                           | No (more direct rendering)              |
+| Wrapper Requirement  | Sometimes need wrapping elements          | No wrappers needed                      |
+| Debugging Experience | Slightly harder due to `ng-template`      | Better debugging and logic separation   |
+| Compatibility        | Works in all Angular versions             | Works only in Angular 17+               |
+
 ---

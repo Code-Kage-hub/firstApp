@@ -1,59 +1,118 @@
-# FirstApp
+04/06
+what I Learnt
+---
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
+### 1) What is Directive?
 
-## Development server
+* **Directive** is a special class in Angular that **adds behavior to elements** in your Angular applications.
+* It can **change the appearance or behavior** of DOM elements.
+* Angular has **built-in directives** and you can also **create custom directives**.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+### 2) What Are Types of Directive?
+
+There are **3 main types** of directives in Angular:
+
+1. **Component Directives**
+
+   * These are the most common. A component is basically a directive with a template.
+   * Example: Your Angular components like `<app-root>`
+
+2. **Structural Directives**
+
+   * Change the **structure of the DOM** by adding or removing elements.
+   * Example: `*ngIf`, `*ngFor`, `*ngSwitch`
+
+3. **Attribute Directives**
+
+   * Change the **appearance or behavior** of an existing element (without changing the DOM structure).
+   * Example: `ngClass`, `ngStyle`, `[disabled]`
+
+---
+
+### 3) What Are Structural Directives?
+
+* Structural directives **change the layout** by **adding or removing elements** in the DOM.
+* They usually start with an asterisk (`*`) before the directive name.
+* Examples:
+
+  * `*ngIf` — conditionally adds/removes an element.
+  * `*ngFor` — repeats an element for each item in a collection.
+
+---
+
+### 4) How to use `*ngIf` Directive?
+
+* `*ngIf` conditionally **shows or hides** an element based on a boolean expression.
+
+**Example:**
+
+```html
+<div *ngIf="isLoggedIn">
+  Welcome, user!
+</div>
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* Here, the `<div>` will only be in the DOM if `isLoggedIn` is `true`.
+* If `isLoggedIn` is `false`, the element is completely removed from the DOM.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 5) How to use `*ngFor` Directive?
 
-```bash
-ng generate component component-name
+* `*ngFor` **loops** through a list/array and creates a template instance for each item.
+
+**Example:**
+
+```html
+<ul>
+  <li *ngFor="let item of items">{{ item }}</li>
+</ul>
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+* If `items = ['Apple', 'Banana', 'Cherry']`, this will render:
 
-```bash
-ng generate --help
+  * Apple
+  * Banana
+  * Cherry
+
+---
+
+### 6) How to Hide and Show Element in Angular?
+
+Two common ways:
+
+**Method 1: Using `*ngIf` (adds/removes element)**
+
+```html
+<div *ngIf="showElement">I am visible only if showElement is true</div>
 ```
 
-## Building
+**Method 2: Using `[hidden]` attribute (only hides element via CSS)**
 
-To build the project run:
-
-```bash
-ng build
+```html
+<div [hidden]="!showElement">I am hidden by CSS if showElement is false</div>
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+* `*ngIf` completely removes or adds the element in DOM.
+* `[hidden]` just hides it with CSS (`display: none`) but the element remains in DOM.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 7) How to Create Dynamic Element in Angular?
 
-```bash
-ng test
+You can create dynamic elements in Angular by:
+
+* Using `*ngFor` to render lists dynamically.
+* Using Angular’s **`ViewContainerRef`** and **`ComponentFactoryResolver`** (advanced) to dynamically create components/elements at runtime.
+
+**Basic dynamic list example with `*ngFor`:**
+
+```html
+<div *ngFor="let user of users">
+  {{ user.name }}
+</div>
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---

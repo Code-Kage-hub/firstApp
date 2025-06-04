@@ -1,1 +1,39 @@
-<p>ng-for works!</p>
+<div class="row p-3">
+    <div class="col-3">
+        Ordered List
+        <ul>
+            <li *ngFor="let city of cityList">{{city}}</li>
+        </ul>
+    </div>
+    <div class="col-7">
+        <button class="btn btn-success mx-2" *ngFor="let a of cityList">{{a}}</button>
+    </div>
+</div>
+
+<div class="row p-3">
+    <div class="col-3">
+        <select name="" id="">
+            <option *ngFor="let emp of empList" [value]="emp">{{emp.name}} - {{emp.city}}</option>
+        </select>
+    </div>
+    <div class="col-5">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of empList; let sno = index" >
+                    <th>{{sno+1}}</th>
+                    <th>{{emp.name}}</th>
+                    <th>{{emp.city}}</th>
+                    <th>{{emp.contact}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

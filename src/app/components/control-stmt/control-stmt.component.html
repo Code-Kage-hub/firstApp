@@ -18,6 +18,11 @@
         </div>
         }
     </div>
+    <div class="col-8 pt-4 ">
+        @for(emp of empList; track $index){
+            <button class="btn btn-success mx-3">{{emp.name}}</button>
+        }
+    </div>
 </div>
 <div class="row p-4">
     <div class="col-3">

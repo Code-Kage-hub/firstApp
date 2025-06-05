@@ -1,3 +1,45 @@
-<h1>Angular 19</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Angular Demo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<app-linked-signals/>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/control-stmt" routerLinkActive="active">Control Statement</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/data-binding" routerLinkActive="active">Data Binding</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signals" routerLinkActive="active">Signals</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/linked-signals" routerLinkActive="active">Linked Signals</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/ng-class" routerLinkActive="active">NgClass</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/ng-for" routerLinkActive="active">NgFor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/ng-if" routerLinkActive="active">NgIf</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/ng-style" routerLinkActive="active">NgStyle</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user" routerLinkActive="active">User</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

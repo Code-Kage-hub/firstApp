@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { UserComponent } from "./components/user/user.component";
 import { AdminComponent } from "./components/admin/admin.component";
 import { DataBindinComponent } from "./components/data-bindin/data-bindin.component";
@@ -13,7 +13,7 @@ import { LinkedSignalsComponent } from "./components/linked-signals/linked-signa
 
 @Component({
   selector: 'app-root',
-  imports: [LinkedSignalsComponent],
+  imports: [LinkedSignalsComponent,RouterOutlet,RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

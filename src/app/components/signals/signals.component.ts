@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { single } from 'rxjs';
 
 @Component({
   selector: 'app-signals',

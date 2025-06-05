@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-data-bindin',
@@ -13,9 +14,13 @@ export class DataBindinComponent {
   subject:string = "maths";
   isPassed:boolean = true;
   selectedCountry:string ="";
-  constructor(){
+  constructor(private router:Router){
     this.firstName = "Hua";
     this.rollNum = 203;
+  }
+
+  navAdmin(){
+    this.router.navigateByUrl("/admin")
   }
 
   btnClickedMsg(){

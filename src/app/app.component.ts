@@ -9,10 +9,11 @@ import { NgClassComponent } from "./components/ng-class/ng-class.component";
 import { NgStyleComponent } from "./components/ng-style/ng-style.component";
 import { ControlStmtComponent } from './components/control-stmt/control-stmt.component';
 import { SignalsComponent } from "./components/signals/signals.component";
+import { LinkedSignalsComponent } from "./components/linked-signals/linked-signals.component";
 
 @Component({
   selector: 'app-root',
-  imports: [SignalsComponent],
+  imports: [LinkedSignalsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

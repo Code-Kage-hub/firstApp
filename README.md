@@ -235,4 +235,82 @@ console.log(score());     // → 25
 * They work well with **onPush** change detection and **standalone components**.
 * Signals give you **precise control over state and updates**, improving app performance.
 
+## 🔗 Linked Signals in Angular
+
+### 1️⃣ What is a Linked Signal?
+
+A **Linked Signal** is a reactive signal derived (or computed) from one or more other signals. It automatically **recalculates its value** whenever the dependent signal(s) change.
+
+This allows you to keep derived data in sync without manually watching or recalculating it—**perfect for reactive state derivation.**
+
+> Think of it as a computed value that updates automatically when dependencies change.
+
+---
+
+### 2️⃣ How to Create a Linked Signal?
+
+You create a Linked Signal using the `computed()` function from Angular's signals API.
+
+### ✅ Syntax:
+
+```ts
+import { signal, computed } from '@angular/core';
+
+const basePrice = signal(100);
+const tax = signal(0.18);
+
+// Linked signal
+const totalPrice = computed(() => basePrice() + basePrice() * tax());
+```
+
+Now `totalPrice` will always stay updated based on `basePrice` and `tax`.
+
+### ✅ Usage in Template:
+
+```html
+<p>Base: {{ basePrice }}</p>
+<p>Tax: {{ tax }}</p>
+<p>Total: {{ totalPrice }}</p>
+```
+
+---
+
+### 3️⃣ What is `computation` and `equal` in Linked Signal?
+
+When you define a `computed()` (i.e., a linked signal), Angular lets you optionally pass:
+
+* A **`computation`** function (mandatory) – This is the main logic to compute the value based on dependencies.
+* An **`equal`** function (optional) – This checks if the *new computed value* is **equal** to the previous one to avoid unnecessary updates.
+
+### ✅ Example with `equal`:
+
+```ts
+const price = signal(100);
+
+const discountedPrice = computed({
+  compute: () => price() * 0.9,
+  equal: (prev, next) => Math.abs(prev - next) < 0.01 // skip if difference < 0.01
+});
+```
+
+This prevents minor floating-point changes from triggering updates, improving performance.
+
+---
+
+### 🧠 Summary
+
+| Feature       | Purpose                                             |
+| ------------- | --------------------------------------------------- |
+| `computed()`  | Create a value that reacts to one or more signals   |
+| `computation` | Function that returns a value based on dependencies |
+| `equal`       | Optional comparator to prevent unnecessary updates  |
+
+---
+
+### 📌 Final Notes
+
+* Linked signals are **pure and stateless**.
+* Great for **derived values**, such as filtering lists, totals, or derived UI state.
+* Automatically cleaned up and optimized by Angular’s **reactivity graph**.
+
 ---

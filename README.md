@@ -127,4 +127,112 @@ You can create dynamic elements in Angular by:
 | Debugging Experience | Slightly harder due to `ng-template`      | Better debugging and logic separation   |
 | Compatibility        | Works in all Angular versions             | Works only in Angular 17+               |
 
+
+05/06/25
+## 🚀 Understanding Angular Signals
+
+### ❓ Why Use Signals Instead of Just Interpolation?
+
+> *“We use signals for dynamic value updates, but can't we just use data interpolation (`{{ value }}`)?”*
+
+**Interpolation (`{{ }}`)** is used only for displaying values in templates. While Angular updates interpolated values automatically during change detection, it isn't reactive or efficient for complex state management.
+
+**Signals**, introduced in Angular 16, offer a new **reactive state management model** that:
+
+* Tracks dependencies automatically
+* Triggers precise re-renders (fine-grained reactivity)
+* Eliminates the need for manual `ChangeDetectorRef` or `RxJS`
+* Scales better with dynamic UIs
+
+#### 🔍 Comparison
+
+| Feature          | Interpolation (`{{ }}`)       | Signals (`signal()`)              |
+| ---------------- | ----------------------------- | --------------------------------- |
+| Use case         | Display values                | Track & update dynamic state      |
+| Reactivity       | Not reactive by itself        | Fully reactive                    |
+| Change detection | Zone-based, checks everything | Fine-grained & efficient          |
+| Best for         | Simple or static UI binding   | Dynamic, stateful, interactive UI |
+
+---
+
+## 📘 Signals in Angular: Concepts & Examples
+
+### 1️⃣ What is a Signal?
+
+A **Signal** is a reactive wrapper around a value that notifies its subscribers when the value changes.
+
+```ts
+import { signal } from '@angular/core';
+
+const counter = signal(0); // Signal holding number 0
+```
+
+---
+
+### 2️⃣ How to Create and Update a Signal?
+
+#### ✅ Creating a Signal:
+
+```ts
+import { signal } from '@angular/core';
+
+const name = signal('John');
+```
+
+#### 🔁 Updating a Signal using `set()`:
+
+```ts
+name.set('Doe'); // replaces current value with 'Doe'
+```
+
+#### 🔁 Updating using `update()`:
+
+```ts
+const counter = signal(0);
+counter.update(prev => prev + 1); // increases current value by 1
+```
+
+---
+
+### 3️⃣ How to Access Signal Value?
+
+To **read** the current value of a signal, use **function call syntax**:
+
+```ts
+console.log(name()); // prints: 'Doe'
+```
+
+In templates, Angular automatically unwraps signals:
+
+```html
+<p>{{ name }}</p> <!-- will print 'Doe' -->
+```
+
+---
+
+### 4️⃣ `set()` vs `update()` Methods
+
+| Method     | Purpose                             | Example                     |
+| ---------- | ----------------------------------- | --------------------------- |
+| `set()`    | Replace the current value directly  | `signal.set(newValue)`      |
+| `update()` | Modify value based on current value | `signal.update(v => v + 1)` |
+
+#### ✅ Example:
+
+```ts
+const score = signal(10);
+
+score.set(20);           // sets score to 20
+score.update(v => v + 5); // updates to 25
+console.log(score());     // → 25
+```
+
+---
+
+### 🧠 Summary
+
+* **Signals** are powerful tools for managing and reacting to state changes.
+* They work well with **onPush** change detection and **standalone components**.
+* Signals give you **precise control over state and updates**, improving app performance.
+
 ---

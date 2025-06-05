@@ -8,10 +8,11 @@ import { NgForComponent } from "./components/ng-for/ng-for.component";
 import { NgClassComponent } from "./components/ng-class/ng-class.component";
 import { NgStyleComponent } from "./components/ng-style/ng-style.component";
 import { ControlStmtComponent } from './components/control-stmt/control-stmt.component';
+import { SignalsComponent } from "./components/signals/signals.component";
 
 @Component({
   selector: 'app-root',
-  imports: [ControlStmtComponent],
+  imports: [SignalsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

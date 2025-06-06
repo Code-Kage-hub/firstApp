@@ -371,4 +371,81 @@ Imagine filling out a bank form. The paper is the input box (`<input>`), and a c
 
 This setup helps create dynamic, user-friendly forms with real-time validation feedback.
 
+### 📘 What is a Reactive Form in Angular?
+
+A **Reactive Form** is one of the two ways to build forms in Angular. Unlike Template-driven forms, **Reactive Forms** give you **full control over form logic in your component class** using TypeScript. This method is **more scalable, testable, and predictable**, making it suitable for complex and dynamic forms.
+
+---
+
+### 🔍 Key Features of Reactive Forms:
+
+* Form model is created in the **TypeScript class**, not in the template.
+* Uses **`FormControl`**, **`FormGroup`**, and **`FormArray`** for building form structures.
+* Supports **synchronous and asynchronous validation**.
+* Easily **testable and scalable** for large apps.
+* Built using **Observable-based APIs**, providing better reactivity and change tracking.
+
+---
+
+### 📦 Basic Example:
+
+#### ✅ Component Class (TypeScript):
+
+```ts
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html'
+})
+export class LoginComponent {
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required])
+  });
+
+  onSubmit() {
+    console.log(this.loginForm.value);
+  }
+}
+```
+
+#### ✅ Template (HTML):
+
+```html
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <label>Email:</label>
+  <input type="email" formControlName="email">
+  <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+    Email is required and must be valid.
+  </div>
+
+  <label>Password:</label>
+  <input type="password" formControlName="password">
+  <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+    Password is required.
+  </div>
+
+  <button [disabled]="loginForm.invalid">Login</button>
+</form>
+```
+
+---
+
+### 🧠 Real-World Analogy:
+
+Think of **Reactive Forms** like building a form using code-first logic — as if you’re writing backend validation rules, but in the frontend. You control every field’s behavior, rules, and structure programmatically — making it **developer-driven**.
+
+---
+
+### 📌 Topics Used:
+
+* `FormGroup`
+* `FormControl`
+* `Validators`
+* `[formGroup]`, `formControlName`
+* `ngSubmit` event
+* Form validation handling
+
 ---

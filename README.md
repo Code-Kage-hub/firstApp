@@ -314,3 +314,61 @@ This prevents minor floating-point changes from triggering updates, improving pe
 * Automatically cleaned up and optimized by Angular’s **reactivity graph**.
 
 ---
+06/06
+
+## 🌟 Template Reference Variable with `ngModel` in Angular
+
+### 🔸 Topics Covered:
+
+* Template Reference Variable (`#var`)
+* `ngModel` directive
+* Two-way data binding (`[(ngModel)]`)
+* Form validation
+* Real-world analogy
+
+---
+
+### 🔹 What is `#fname="ngModel"`?
+
+In Angular, `#fname="ngModel"` is a **template reference variable** that gives you access to the **NgModel directive instance**, not the HTML element itself. This allows you to track and react to the state of the input field (e.g., whether it's valid, touched, or what value it holds).
+
+---
+
+### 🧠 Real-World Analogy:
+
+Imagine filling out a bank form. The paper is the input box (`<input>`), and a clerk watches your actions:
+
+* The **clerk** = `ngModel`
+* The **input name field** = `<input>`
+* Saying `#fname="ngModel"` is like saying:
+
+  > "Let me get live updates from the clerk about this input’s value and whether it’s correctly filled."
+
+---
+
+### ✅ Example:
+
+```html
+<form #myForm="ngForm">
+  <input type="text" name="fname" [(ngModel)]="firstName" #fname="ngModel" required>
+
+  <p *ngIf="fname.invalid && fname.touched" style="color:red;">
+    Name is required!
+  </p>
+
+  <p>Status: {{ fname.valid ? 'Valid' : 'Invalid' }}</p>
+  <p>Value: {{ fname.value }}</p>
+
+  <button [disabled]="myForm.invalid">Submit</button>
+</form>
+```
+
+### 📌 Key Features:
+
+* `[(ngModel)]="firstName"` binds the input to a component property.
+* `#fname="ngModel"` provides access to the input’s validation and value state.
+* `fname.valid`, `fname.touched`, and `fname.value` are used for form feedback.
+
+This setup helps create dynamic, user-friendly forms with real-time validation feedback.
+
+---

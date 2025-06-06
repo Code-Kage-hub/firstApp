@@ -13,7 +13,7 @@ import { LinkedSignalsComponent } from "./components/linked-signals/linked-signa
 
 @Component({
   selector: 'app-root',
-  imports: [LinkedSignalsComponent,RouterOutlet,RouterLink],
+  imports: [RouterOutlet,RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

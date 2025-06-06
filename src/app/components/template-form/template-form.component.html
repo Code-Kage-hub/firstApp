@@ -1,0 +1,59 @@
+<div class="container">
+    <h2>Template Form Validation</h2>
+    <form class="row g-3" #formValue="ngForm">
+        <div class="col-md-4">
+            <label class="form-label">First name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" [(ngModel)]="userObj.fname" #fname="ngModel" name="fname"
+                value="Mark" required>
+                <div class="text-danger">
+                   @if (fname.errors?.['required'] && fname.touched && fname.dirty) {
+                        <span>This is required</span>
+                   }
+                </div>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Last name</label>
+            <input type="text" class="form-control" required minlength="4" #lname="ngModel" [(ngModel)]="userObj.lname" name="lname" value="Otto">
+            <span class="text-danger" *ngIf="lname.errors?.['required'] && lname.touched">This is required</span>
+            <span class="text-danger" *ngIf="lname.errors?.['minlength'] && lname.touched">Min of 4 Characters</span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Username</label>
+            <div class="input-group">
+                <span class="input-group-text" id="inputGroupPrepend2">&#64;</span>
+                <input type="text" class="form-control" [(ngModel)]="userObj.uname" name="uname">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">City</label>
+            <input type="text" class="form-control" #city="ngModel" [(ngModel)]="userObj.city" name="city">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">State</label>
+            <select class="form-select" [(ngModel)]="userObj.state" name="state">
+                <option selected disabled value="">Choose state</option>
+                <option>Andhra Pradesh</option>
+                <option>Telangana</option>
+                <option>Karnataka</option>
+                <option>Tamil nadu</option>
+                <option>kerala</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Zip</label>
+            <input type="text" class="form-control" #zipCode="ngModel" [(ngModel)]="userObj.zipcode" name="zipcode">
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" #isCheck="ngModel" [(ngModel)]="userObj.isAgree" name="isAgree" value="">
+                <label class="form-check-label" for="invalidCheck2">
+                    Agree to terms and conditions
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit" [disabled]="formValue.invalid" (click)="onSave()">Submit
+                form</button>
+        </div>
+    </form>
+</div>

@@ -10,6 +10,7 @@ import { NgIfComponent } from './components/ng-if/ng-if.component';
 import { NgStyleComponent } from './components/ng-style/ng-style.component';
 import { SignalsComponent } from './components/signals/signals.component';
 import { UserComponent } from './components/user/user.component';
+import { TemplateFormComponent } from './components/template-form/template-form.component';
 
 export const routes: Routes = [
     {
@@ -56,5 +57,9 @@ export const routes: Routes = [
     {
         path:'user',
         component:UserComponent
+    },
+    {
+        path:'template-form',
+        component:TemplateFormComponent
     }
 ];
